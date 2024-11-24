@@ -53,16 +53,48 @@ const displayDetails = (data) => {
 }
 
 const categoryBtn = async (id) => {
-    const ref = await fetch(`https://openapi.programming-hero.com/api/videos/category/${id}`)
-    const data = await ref.json();
-    const load = data.data;
-    console.log(load);
-    displayDetails(load);
-    // data.forEach(item => {
-    //     fetch(`https://openapi.programming-hero.com/api/videos/category/${item.category_id}`)
-    //     .then(res => res.json())
-    //     .then(data => console.log(data))
-}
+    try {
+        const ref = await fetch(`https://openapi.programming-hero.com/api/videos/category/${id}`);
+        const data = await ref.json();
+        const load = data.data;
+
+        // Check if the category contains videos
+        if (load.length === 0) {
+            // console.log(load)
+            const detailsCategory = document.getElementById('details-category');
+            detailsCategory.textContent = null;
+
+            const noContent = document.getElementById('no-content');
+            noContent.classList.remove('hidden');
+            noContent.innerHTML = `
+                <div class="text-center">
+                    <div class="w-40 m-auto">
+                        <img src="Assets/Icon.png" />
+                    </div>
+                    <div>
+                        <p class="text-black text-4xl">Oops!! Sorry,There is no content here.</p>
+                    </div>
+                </div>
+            `
+        }else{
+            const noContent = document.getElementById('no-content');
+            noContent.classList.add('hidden')
+            noContent.textContent = null
+        }
+
+        // If there are videos, display them
+        displayDetails(load);
+    } catch (error) {
+        console.error("Error fetching category details:", error);
+        const detailsCategory = document.getElementById('details-category');
+        detailsCategory.innerHTML = `
+            <p class="text-red-500 text-center">Failed to load videos. Please try again later.</p>
+        `;
+    }
+};
+
+
+
 
 categoryBtn(1000);
    

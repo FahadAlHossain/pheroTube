@@ -17,7 +17,7 @@
             <div class="navbar bg-white">
                 <div class="navbar-start">
                   <div class="dropdown">
-                    <div tabindex="0" role="button" class="btn btn-netural lg:hidden">
+                    <div tabindex="0" role="button" class="btn btn-netural bg-white border-none mr-3 lg:hidden">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         class="h-5 w-5"
@@ -51,12 +51,15 @@
     </header>
     <main>
         <section class="container m-auto w-96 mb-5">
-            <div  id="btn-category" class="grid grid-cols-4 gap-3"></div>
+            <div  id="btn-category" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3"></div>
         </section>
 
-        <section class="container m-auto">
-            <div id="details-category" class="grid grid-cols-4 gap-4">
+        <section class="container m-auto pb-5">
+            <div id="details-category" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
             </div>
+        </section>
+
+        <section id="no-content" class="container m-auto w-80 h-96 mt-40 hidden">
         </section>
     </main>
 
