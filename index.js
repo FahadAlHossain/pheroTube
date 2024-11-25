@@ -37,7 +37,7 @@ const displayDetails = (data) => {
         const hrMin = convertDays(items.others.posted_date);
         // console.log(items.category_id)
         detailsCategory.innerHTML += items.others.posted_date ? `
-            <div class="card bg-white text-black w-[98%] shadow-xl">
+            <div class="card bg-white text-black w-[100%] shadow-xl">
               <figure>
                     <div class="indicator">
                         <span class="indicator-item indicator-bottom badge badge-ghost mb-4 mr-20 text-white">${hrMin}</span>
@@ -63,7 +63,7 @@ const displayDetails = (data) => {
         `
         :
         `
-             <div class="card bg-white text-black w-[98%] shadow-xl">
+             <div class="card bg-white text-black w-[100%] shadow-xl">
                 <figure>
                     <img class="w-96 h-72 rounded-xl"
                     src=${items.thumbnail}
