@@ -65,7 +65,7 @@ const displayDetails = (data) => {
         `
              <div class="card bg-white text-black w-[100%] shadow-xl">
                 <figure>
-                    <img class="w-96 h-72 rounded-xl"
+                    <img class="w-[100%] h-72 rounded-xl"
                     src=${items.thumbnail}
                     alt="Shoes" />
                 </figure>
