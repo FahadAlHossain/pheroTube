@@ -41,7 +41,7 @@ const displayDetails = (data) => {
               <figure>
                     <div class="indicator">
                         <span class="indicator-item indicator-bottom badge badge-ghost mb-4 mr-20 text-white">${hrMin}</span>
-                        <div class="bg-base-300 grid place-items-center"><img class="w-96 h-72 rounded-xl"
+                        <div class="bg-base-300 grid place-items-center rounded-xl"><img class="w-[100%] h-72 rounded-xl"
                             src=${items.thumbnail}
                             alt="Shoes" />
                         </div>
