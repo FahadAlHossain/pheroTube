@@ -20,21 +20,55 @@ const displayCategory = (data) => {
     // categoryBtn(data)
 }
 
+const convertDays = (seconds) => {
+    const hours = Math.floor(seconds / 3600);
+    const rScnd = seconds % 3600;
+    const minutes = Math.floor( rScnd / 60);
+    return `${hours} hr ${minutes} min ago`;
+}
+
 
 const displayDetails = (data) => {
     const detailsCategory = document.getElementById('details-category');
-    // console.log(data)
+    console.log(data)
 
     detailsCategory.innerHTML = '';
     data.forEach(items => {
+        const hrMin = convertDays(items.others.posted_date);
         // console.log(items.category_id)
-        detailsCategory.innerHTML += `
+        detailsCategory.innerHTML += items.others.posted_date ? `
             <div class="card bg-white text-black w-[98%] shadow-xl">
               <figure>
-                <img class="w-96 h-72 rounded-xl"
-                  src=${items.thumbnail}
-                  alt="Shoes" />
+                    <div class="indicator">
+                        <span class="indicator-item indicator-bottom badge badge-ghost mb-4 mr-20 text-white">${hrMin}</span>
+                        <div class="bg-base-300 grid place-items-center"><img class="w-96 h-72 rounded-xl"
+                            src=${items.thumbnail}
+                            alt="Shoes" />
+                        </div>
+                    </div>
               </figure>
+              <div class="card-body">
+                    <div class="avatar">
+                      <div class="w-10 rounded-full">
+                         <img src=${items.authors[0].profile_picture} />
+                      </div>
+                        <h2 class="card-title pl-3">${items.title}</h2>
+                    </div>
+                    <div class="pl-14 text-slate-500">
+                        <p>${items.authors[0].profile_name} <span>${items.authors[0].verified}</span></p>
+                        <span>${items.others.views} views</span>
+                    </div>
+              </div>
+            </div>
+        `
+        :
+        `
+             <div class="card bg-white text-black w-[98%] shadow-xl">
+                <figure>
+                    <img class="w-96 h-72 rounded-xl"
+                    src=${items.thumbnail}
+                    alt="Shoes" />
+                </figure>
               <div class="card-body">
                     <div class="avatar">
                       <div class="w-10 rounded-full">

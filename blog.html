@@ -3,9 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Blog</title>
 </head>
-<body>
-    
+<body class="bg-white h-full p-3">
+    <header class="container m-auto">
+        <nav>
+            <div class="navbar bg-white">
+                <div class="navbar-start">
+                  <a href="index.html"><img src="Assets/Logo.png" alt=""></a>
+                </div>
+                <div class="navbar-end">
+                  <a href="index.html" class="btn btn-error bg-red-600 text-white font-semibold">Home</a>
+                </div>
+              </div>
+        </nav>
+        <hr class="my-5">
+    </header>
+    <main class="container m-auto">
+        <section class="w-[50%] mx-[25%] text-black text-2xl">
+            <div>
+                <h1 class="my-8">Differences between <span class="text-red-600 font-semibold">var</span>, <span class="text-red-600 font-semibold">let</span>, and <span class="text-red-600 font-semibold">const</span></h1>
+                <table class="text-center  border border-3 border-black table-auto">
+                    <thead class="bg-slate-600 text-white font-semibold">
+                        <tr>
+                            <td>var</td>
+                            <td>let</td>
+                            <td>const</td>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-gray-400">
+                        <tr>
+                            <td>The scope of a var variable is functional or global scope.</td>
+                            <td>The scope of a let variable is block scope.</td>
+                            <td>The scope of a const variable is block scope.</td>
+                        </tr>
+                        <tr>
+                            <td>It can be updated and re-declared in the same scope.</td>
+                            <td>It can be updated but cannot be re-declared in the same scope.</td>
+                            <td>It can neither be updated or re-declared in any scope.</td>
+                        </tr>
+                        <tr>
+                            <td>It can be declared without initialization.</td>
+                            <td>It can be declared without initialization.</td>
+                            <td>It cannot be declared without initialization.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
 </body>
 </html>
