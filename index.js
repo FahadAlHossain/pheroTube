@@ -30,20 +30,29 @@ const convertDays = (seconds) => {
 
 const displayDetails = (data) => {
     const detailsCategory = document.getElementById('details-category');
-    console.log(data)
+    console.log(data);
 
     detailsCategory.innerHTML = '';
-    data.forEach(items => {
-        const hrMin = convertDays(items.others.posted_date);
-        // console.log(items.category_id)
-        detailsCategory.innerHTML += items.others.posted_date ? `
+    data.forEach((items) => {
+        const hrMin = convertDays(items.others.posted_date); 
+        
+        const verifiedBadge = items.authors[0].verified
+            ? `<i class="fa-solid fa-circle-check text-blue-700"></i>` 
+            : ''; // Add badge if verified is true
+        
+        detailsCategory.innerHTML += `
             <div class="card bg-white text-black w-[100%] shadow-xl">
               <figure>
                     <div class="indicator">
-                        <span class="indicator-item indicator-bottom badge badge-ghost mb-4 mr-20 text-white">${hrMin}</span>
-                        <div class="bg-base-300 grid place-items-center rounded-xl"><img class="w-[100%] h-72 rounded-xl"
-                            src=${items.thumbnail}
-                            alt="Shoes" />
+                        ${
+                            items.others.posted_date
+                                ? `<span class="indicator-item indicator-bottom badge badge-ghost mb-4 mr-20 text-white">${hrMin}</span>`
+                                : ''
+                        }
+                        <div class="bg-base-300 grid place-items-center rounded-xl">
+                            <img class="w-[100%] h-72 rounded-xl"
+                                src=${items.thumbnail}
+                                alt="Shoes" />
                         </div>
                     </div>
               </figure>
@@ -52,39 +61,17 @@ const displayDetails = (data) => {
                       <div class="w-10 h-10 rounded-full">
                          <img src=${items.authors[0].profile_picture} />
                       </div>
-                        <h2 class="card-title pl-3">${items.title}</h2>
+                        <h2 class="card-title text-lg pl-3">${items.title}</h2>
                     </div>
                     <div class="pl-14 text-slate-500">
-                        <p>${items.authors[0].profile_name} <span>${items.authors[0].verified}</span></p>
+                        <p>${items.authors[0].profile_name} ${verifiedBadge}</p>
                         <span>${items.others.views} views</span>
                     </div>
               </div>
             </div>
-        `
-        :
-        `
-             <div class="card bg-white text-black w-[100%] shadow-xl">
-                <figure>
-                    <img class="w-[100%] h-72 rounded-xl"
-                    src=${items.thumbnail}
-                    alt="Shoes" />
-                </figure>
-              <div class="card-body">
-                    <div class="avatar">
-                      <div class="w-10 h-10 rounded-full">
-                         <img src=${items.authors[0].profile_picture} />
-                      </div>
-                        <h2 class="card-title pl-3">${items.title}</h2>
-                    </div>
-                    <div class="pl-14 text-slate-500">
-                        <p>${items.authors[0].profile_name} <span>${items.authors[0].verified}</span></p>
-                        <span>${items.others.views} views</span>
-                    </div>
-              </div>
-            </div>
-        `
-    })
-}
+        `;
+    });
+};
 
 const categoryBtn = async (id) => {
     try {
