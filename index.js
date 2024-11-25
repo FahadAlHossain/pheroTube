@@ -49,7 +49,7 @@ const displayDetails = (data) => {
               </figure>
               <div class="card-body">
                     <div class="avatar">
-                      <div class="w-10 rounded-full">
+                      <div class="w-10 h-10 rounded-full">
                          <img src=${items.authors[0].profile_picture} />
                       </div>
                         <h2 class="card-title pl-3">${items.title}</h2>
