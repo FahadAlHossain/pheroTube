@@ -2,7 +2,7 @@ const loadData = async () =>{
     const ref = await fetch('https://openapi.programming-hero.com/api/videos/categories')
     const data = await ref.json();
     const load = data.data;
-    console.log(load);
+    // console.log(load);
     displayCategory(load);
 }
 
@@ -30,7 +30,7 @@ const convertDays = (seconds) => {
 
 const displayDetails = (data) => {
     const detailsCategory = document.getElementById('details-category');
-    console.log(data);
+    // console.log(data);
 
     detailsCategory.innerHTML = '';
     data.forEach((items) => {
@@ -73,11 +73,31 @@ const displayDetails = (data) => {
     });
 };
 
+
+document.getElementById('sort-by-views').addEventListener('click', () => {
+    if (!currentVideos || currentVideos.length === 0) {
+        console.warn("No videos available to sort.");
+        return;
+    }
+
+    const sortedVideos = [...currentVideos].sort((a, b) => {
+        const viewsA = parseInt(a.others.views) || 0; 
+        const viewsB = parseInt(b.others.views) || 0;
+        return viewsB - viewsA;
+    });
+
+    displayDetails(sortedVideos);
+});
+
+let currentVideos = [];
+
 const categoryBtn = async (id) => {
     try {
         const ref = await fetch(`https://openapi.programming-hero.com/api/videos/category/${id}`);
         const data = await ref.json();
         const load = data.data;
+
+        currentVideos = load;
 
         // Check if the category contains videos
         if (load.length === 0) {
